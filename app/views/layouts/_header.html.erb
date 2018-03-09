@@ -1,22 +1,55 @@
 
-<center>   
-<div class="navbar">   
-      <a class="navbar-brand" href="#"> The Dog House </a><br><br>
-       <p> <%= image_tag("paw.png", :class => "img-responsive", :style => "width:5%", :alt => "image" )%></p>
-  
-    <ul class="nav navbar-nav">
-      
-      <li class="active"><%= link_to "Home", root_path %></li>
-      <li class="point"><%= link_to "Contact", contact_path %></li>
-        <li class="point"><%= link_to "Services", services_path %></li>
-        <li class="point"><%= link_to "Bookings", tblbookings_path %></li>
-        <li class="point"><%= link_to "Inventory", tblinventories_path %></li>
 
-      <li class="point"><a href="#">Reviews</a></li>
-        
+<div class="site-container">
+  <div class="site-pusher">
     
-      <li class=point><%= link_to "Sign Up", new_tblclient_path %></li>
-      <li class="point"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</center>
+    <header class="header">
+      
+      <a href="#" class="header__icon" id="header__icon"></a>
+        <a href="#" class="header__logo">The Dog House</a>
+     
+        
+      <nav class="menu">
+        <a><%= link_to "Home", root_path %></a>
+        <a><%= link_to "Contact", contact_path %></a>
+        <a><%= link_to "Services", services_path %></a>
+         
+        <a><%= link_to "Reviews", "#" %></a>
+          
+        
+          <a><%= link_to "Login", "#", class: "special" %></a>
+          <a><%= link_to "Sign Up", "#", class: "special" %></a>
+            
+        
+      </nav>
+      
+    </header>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+      
+      
+
+      
+<script>
+$(document).ready(function(){
+
+	(function($) {
+
+		$('#header__icon').click(function(e){
+			e.preventDefault();
+			$('body').toggleClass('with--sidebar');
+		});
+    
+    $('#site-cache').click(function(e){
+      $('body').removeClass('with--sidebar');
+    });
+
+	})(jQuery);
+    
+  
+
+});
+    
+</script>
