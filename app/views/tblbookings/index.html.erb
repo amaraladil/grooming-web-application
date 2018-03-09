@@ -1,0 +1,91 @@
+
+<center>
+     
+<div class="backback">
+   <h1>Bookings</h1>
+<div class="row">
+
+
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bookingid</th>
+      <th>Datetime</th>
+      <th>Ispaid?</th>
+      <th>Dogid</th>
+      <th>Staffid</th>
+      <th>Serviceid</th>
+      <th>Clientid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tblbookings.each do |tblbooking| %>
+      <tr>
+        <td><%= tblbooking.tblbooking_id %></td>
+        <td><%= tblbooking.dateTime.strftime("%d/%m/%Y %H:%M") %></td>
+        <td><%= tblbooking.isPaid? %></td>
+        <td><%= tblbooking.tbldog_id %></td>
+        <td><%= tblbooking.tblstaff_id %></td>
+        <td><%= tblbooking.tblservice_id %></td>
+        <td><%= tblbooking.tblclient_id %></td>
+        <td><%= link_to 'Show', tblbooking %></td>
+        <td><%= link_to 'Edit', edit_tblbooking_path(tblbooking) %></td>
+        <td><%= link_to 'Destroy', tblbooking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Booking', new_tblbooking_path %>
+
+
+<style>
+  #table {
+    color: black;
+    text-align:center;
+    letter-spacing:1.5px;   
+    line-height: 1.5;
+}
+
+table, th, td {
+   border: 1px solid white;
+}
+</style>
+
+
+<table id=table>
+
+  <thead>
+    <tr>
+      <th>ClientName</th>
+      <th>DogName</th>
+       <th>DogSize</th>
+      <th>Service</th>
+      <th>StaffMember</th>  
+      <th>Booking Date/Time</th>  
+    </tr>
+  </thead>
+
+<tbody>
+
+    <tr>    
+      <%= @firstName %>
+    </tr>
+
+ 
+</tbody>
+</table>
+
+
+
+
+</div>
+    
+</div>
+</center>

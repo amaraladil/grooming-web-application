@@ -1,0 +1,22 @@
+
+<center>   
+<div class="navbar">   
+      <a class="navbar-brand" href="#"> The Dog House </a><br><br>
+       <p> <%= image_tag("paw.png", :class => "img-responsive", :style => "width:5%", :alt => "image" )%></p>
+  
+    <ul class="nav navbar-nav">
+      
+      <li class="active"><%= link_to "Home", root_path %></li>
+      <li class="point"><%= link_to "Contact", contact_path %></li>
+        <li class="point"><%= link_to "Services", services_path %></li>
+        <li class="point"><%= link_to "Bookings", tblbookings_path %></li>
+        <li class="point"><%= link_to "Inventory", tblinventories_path %></li>
+
+      <li class="point"><a href="#">Reviews</a></li>
+        
+    
+      <li class=point><%= link_to "Sign Up", new_tblclient_path %></li>
+      <li class="point"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</center>

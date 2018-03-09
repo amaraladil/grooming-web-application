@@ -1,0 +1,2 @@
+module TblinventoriesHelper
+end

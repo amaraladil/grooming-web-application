@@ -1,0 +1,4 @@
+class Tblclient < ApplicationRecord
+	
+	
+end

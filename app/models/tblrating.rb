@@ -1,0 +1,2 @@
+class Tblrating < ApplicationRecord
+end

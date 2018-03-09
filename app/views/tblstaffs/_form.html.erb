@@ -1,0 +1,57 @@
+<%= form_with(model: tblstaff, local: true) do |form| %>
+  <% if tblstaff.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tblstaff.errors.count, "error") %> prohibited this tblstaff from being saved:</h2>
+
+      <ul>
+      <% tblstaff.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :staffID %>
+    <%= form.number_field :staffID, id: :tblstaff_staffID %>
+  </div>
+
+  <div class="field">
+    <%= form.label :firstName %>
+    <%= form.text_field :firstName, id: :tblstaff_firstName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lastName %>
+    <%= form.text_field :lastName, id: :tblstaff_lastName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password, id: :tblstaff_password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phoneNumber %>
+    <%= form.text_field :phoneNumber, id: :tblstaff_phoneNumber %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :tblstaff_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address, id: :tblstaff_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :postalCode %>
+    <%= form.text_field :postalCode, id: :tblstaff_postalCode %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

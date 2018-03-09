@@ -1,0 +1,2 @@
+class Tblinventory < ApplicationRecord
+end

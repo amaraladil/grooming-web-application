@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Serviceid:</strong>
+  <%= @tblservice.serviceID %>
+</p>
+
+<p>
+  <strong>Servicename:</strong>
+  <%= @tblservice.serviceName %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @tblservice.price %>
+</p>
+
+<%= link_to 'Edit', edit_tblservice_path(@tblservice) %> |
+<%= link_to 'Back', tblservices_path %>
