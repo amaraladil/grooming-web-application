@@ -1,0 +1,50 @@
+
+
+<center>
+     
+<div class="backback">
+   <h1>Client Booking</h1>
+<div class="row">
+
+
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Bookingid:</strong>
+  <%= @tblbooking.bookingID %>
+</p>
+
+<p>
+  <strong>Datetime:</strong>
+  <%= @tblbooking.dateTime %>
+</p>
+
+<p>
+  <strong>Ispaid?:</strong>
+  <%= @tblbooking.isPaid? %>
+</p>
+
+<p>
+  <strong>Dogid:</strong>
+  <%= @tblbooking.dogID %>
+</p>
+
+<p>
+  <strong>Staffid:</strong>
+  <%= @tblbooking.staffID %>
+</p>
+
+<p>
+  <strong>Serviceid:</strong>
+  <%= @tblbooking.serviceID %>
+</p>
+
+<%= link_to 'Edit', edit_tblbooking_path(@tblbooking) %> |
+<%= link_to 'Back', tblbookings_path %>
+
+
+</div>
+    
+</div>
+</center>

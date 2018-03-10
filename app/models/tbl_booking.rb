@@ -1,0 +1,2 @@
+class TblBooking < ApplicationRecord
+end

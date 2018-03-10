@@ -1,0 +1,2 @@
+class TblBillController < ApplicationController
+end

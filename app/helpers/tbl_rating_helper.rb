@@ -1,0 +1,2 @@
+module TblRatingHelper
+end

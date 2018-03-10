@@ -1,0 +1,32 @@
+<%= form_with(model: tblservice, local: true) do |form| %>
+  <% if tblservice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tblservice.errors.count, "error") %> prohibited this tblservice from being saved:</h2>
+
+      <ul>
+      <% tblservice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :serviceID %>
+    <%= form.number_field :serviceID, id: :tblservice_serviceID %>
+  </div>
+
+  <div class="field">
+    <%= form.label :serviceName %>
+    <%= form.text_field :serviceName, id: :tblservice_serviceName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price, id: :tblservice_price %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

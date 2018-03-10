@@ -1,0 +1,37 @@
+<%= form_with(model: tbldog, local: true) do |form| %>
+  <% if tbldog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tbldog.errors.count, "error") %> prohibited this tbldog from being saved:</h2>
+
+      <ul>
+      <% tbldog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :dogID %>
+    <%= form.number_field :dogID, id: :tbldog_dogID %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dogName %>
+    <%= form.text_field :dogName, id: :tbldog_dogName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dogSize %>
+    <%= form.text_field :dogSize, id: :tbldog_dogSize %>
+  </div>
+
+  <div class="field">
+    <%= form.label :clientID %>
+    <%= form.number_field :clientID, id: :tbldog_clientID %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

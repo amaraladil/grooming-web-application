@@ -4,7 +4,7 @@ class TblinventoriesController < ApplicationController
   # GET /tblinventories
   # GET /tblinventories.json
   def index
-    @tblinventories = Tblinventory.all
+    @tblinventories = TblInventory.all
   end
 
   # GET /tblinventories/1
@@ -14,7 +14,7 @@ class TblinventoriesController < ApplicationController
 
   # GET /tblinventories/new
   def new
-    @tblinventory = Tblinventory.new
+    @tblinventory = TblInventory.new
   end
 
   # GET /tblinventories/1/edit
@@ -69,6 +69,6 @@ class TblinventoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tblinventory_params
-      params.require(:tblinventory).permit(:inventoryID, :name, :price, :quantity)
+      params.require(:tblinventory).permit( :name, :price, :quantity)
     end
 end

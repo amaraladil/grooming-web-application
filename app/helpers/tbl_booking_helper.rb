@@ -1,0 +1,2 @@
+module TblBookingHelper
+end

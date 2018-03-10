@@ -10,80 +10,76 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305154152) do
+ActiveRecord::Schema.define(version: 20180310025439) do
 
-  create_table "tblbookings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "tblbooking_id"
+  create_table "tbl_bills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "tbl_bookings_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tbl_bookings_id"], name: "index_tbl_bills_on_tbl_bookings_id"
+  end
+
+  create_table "tbl_bookings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.time "dateTime"
     t.boolean "isPaid?"
-    t.integer "tbldog_id"
-    t.integer "tblstaff_id"
-    t.integer "tblservice_id"
+    t.bigint "tbl_users_id"
+    t.bigint "tbl_dogs_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "tblclient_id"
+    t.index ["tbl_dogs_id"], name: "index_tbl_bookings_on_tbl_dogs_id"
+    t.index ["tbl_users_id"], name: "index_tbl_bookings_on_tbl_users_id"
   end
 
-  create_table "tblclients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "clientID"
-    t.string "firstName"
-    t.string "lastName"
-    t.string "password"
-    t.string "phoneNumber"
-    t.string "email"
-    t.string "address"
-    t.string "postalCode"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "userName"
-  end
-
-  create_table "tbldogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "dogID"
+  create_table "tbl_dogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "dogName"
+    t.string "dogType"
     t.string "dogSize"
-    t.integer "tblclient_id"
+    t.bigint "tbl_users_id", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tbl_users_id"], name: "index_tbl_dogs_on_tbl_users_id"
   end
 
-  create_table "tblinventories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "inventoryID"
+  create_table "tbl_inventories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
-    t.integer "price"
+    t.decimal "price", precision: 10
     t.integer "quantity"
+    t.boolean "isActive?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "tblratings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "ratingID"
+  create_table "tbl_ratings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "rating"
     t.string "comment"
-    t.integer "clientID"
+    t.bigint "tbl_users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tbl_users_id"], name: "index_tbl_ratings_on_tbl_users_id"
   end
 
-  create_table "tblservices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "serviceID"
+  create_table "tbl_services", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "serviceName"
-    t.integer "price"
+    t.decimal "price", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "tblstaffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "staffID"
+  create_table "tbl_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "firstName"
     t.string "lastName"
-    t.string "password"
     t.string "phoneNumber"
     t.string "email"
     t.string "address"
     t.string "postalCode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
+  add_foreign_key "tbl_bills", "tbl_bookings", column: "tbl_bookings_id"
+  add_foreign_key "tbl_bookings", "tbl_dogs", column: "tbl_dogs_id"
+  add_foreign_key "tbl_bookings", "tbl_users", column: "tbl_users_id"
+  add_foreign_key "tbl_dogs", "tbl_users", column: "tbl_users_id"
+  add_foreign_key "tbl_ratings", "tbl_users", column: "tbl_users_id"
 end

@@ -1,0 +1,2 @@
+class TblService < ApplicationRecord
+end

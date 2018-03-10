@@ -1,0 +1,2 @@
+module TblDogHelper
+end
