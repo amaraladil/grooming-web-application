@@ -1,2 +1,0 @@
-class Tblinventory < ApplicationRecord
-end

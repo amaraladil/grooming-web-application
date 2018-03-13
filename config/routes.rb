@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     get  '/services',   to: 'application#services'
     get  '/signup',  to: 'tbl_users#new'
     post '/signup',  to: 'tbl_users#create'
-  get 'tbl_users/new'
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

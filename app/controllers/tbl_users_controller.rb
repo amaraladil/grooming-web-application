@@ -1,7 +1,10 @@
 class TblUsersController < ApplicationController
   def new
   	@user = TblUser.new
+  end
 
+  def show
+    @user = TblUser.find(params[:id])
   end
 
   def create
@@ -12,7 +15,7 @@ class TblUsersController < ApplicationController
             redirect_to tbl_users_url    
         else
           log_in @user
-          flash[:success] = "Welcome to King William Hotel"
+          flash[:success] = "Welcome to The Dog House"
           redirect_to @user
         end            
     
@@ -26,7 +29,7 @@ class TblUsersController < ApplicationController
 
     def user_params
         params.require(:tbl_user).permit(:firstName, :lastName, :email, :password,
-            :password_confirmation, :phoneNumber, :postalCode)
+            :password_confirmation, :phoneNumber, :address, :postalCode)
     end
 
     def logged_in_user

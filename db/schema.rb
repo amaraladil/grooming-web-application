@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310025439) do
+ActiveRecord::Schema.define(version: 20180312234229) do
 
   create_table "tbl_bills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "tbl_bookings_id"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180310025439) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.integer "userType", default: 3
   end
 
   add_foreign_key "tbl_bills", "tbl_bookings", column: "tbl_bookings_id"

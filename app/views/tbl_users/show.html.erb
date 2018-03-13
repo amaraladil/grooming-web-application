@@ -1,0 +1,25 @@
+<% provide(:title, @user.firstName) %>
+<div class="row">
+  <div class="col-sm-6">
+   
+    <h3>
+      <%= @user.firstName %> <%= @user.lastName %>
+    </h3>
+     
+    <h5>
+      Customer Account
+    </h5>   
+    <hr/>
+    <div class="profile">
+      <h5>
+        <%= image_tag("paw.png", :class => "img-responsive", :style => "width:12%", :alt => "image" ) %> <br/>
+        <b>User ID: </b><%= @user.id %><br/><br/>
+        <b>First Name: </b><%= @user.firstName %><br/><br/>
+        <b>Last Name: </b><%= @user.lastName %><br/><br/>
+        <b>Email Address: </b><%= @user.email %><br/><br/>
+        <b>Address: </b><%= @user.address %><br/><br/>
+        <b>Postal Code: </b><%= @user.postalCode %><br/><br/>
+      </h5>  
+    </div>      
+  </div>
+</div>
