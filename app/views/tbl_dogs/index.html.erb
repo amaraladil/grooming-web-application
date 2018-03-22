@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tbldogs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Dogid</th>
+      <th>Dogname</th>
+      <th>Dogsize</th>
+      <th>Clientid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tbldogs.each do |tbldog| %>
+      <tr>
+        <td><%= tbldog.id %></td>
+        <td><%= tbldog.dogName %></td>
+        <td><%= tbldog.dogSize %></td>
+        <td><%= tbldog.tbl_users_id %></td>
+        <td><%= link_to 'Show', tbldog %></td>
+        <td><%= link_to 'Edit', edit_tbl_dog_path(tbldog) %></td>
+        <td><%= link_to 'Destroy', tbldog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tbldog', new_tbl_dog_path %>
+
+
+
+
+
+

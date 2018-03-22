@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get  '/signup',  to: 'tbl_users#new'
     post '/signup',  to: 'tbl_users#create'
     get  '/dogs', to: 'tbl_dogs#new'
-    post '/dogs', to: 'tbl_dogs#create'
+    post '/tbl_dogs', to: 'tbl_dogs#create'
     
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
