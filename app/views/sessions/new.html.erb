@@ -1,2 +1,30 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<center>
+
+<div class= "center jumbotron" style="width:100%">
+    <h3>Log In <br/>
+        <b>Welcome Back</b></h3>
+  </div> 
+  
+</center>
+
+<div class="display">
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:session, url: login_path) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+<br/>
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% end %>
+      <br/>
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
+</div>
+    </div>
+
+	
+
