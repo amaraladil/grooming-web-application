@@ -9,13 +9,16 @@ Rails.application.routes.draw do
   resources :tbl_dogs
   resources :tbl_users
   resources :tbl_bookings
+    
   get 'home/index'
-  	root 'home#index'
+    root 'home#index'
   	get  '/contact',   to: 'application#contact'
     get  '/services',   to: 'application#services'
     get  '/signup',  to: 'tbl_users#new'
     post '/signup',  to: 'tbl_users#create'
-
+    get  '/dogs', to: 'tbl_dogs#new'
+    post '/dogs', to: 'tbl_dogs#create'
+    
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'

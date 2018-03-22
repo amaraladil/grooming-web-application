@@ -5,22 +5,43 @@
     
     <header class="header">
       
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+
+		<!-- Website CSS style -->
+		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+        
       <a href="#" class="header__icon" id="header__icon"></a>
         <a href="#" class="header__logo">The Dog House</a>
      
         
       <nav class="menu">
-        <a><%= link_to "Home", root_path %></a>
-        <a><%= link_to "Contact", contact_path %></a>
-        <a><%= link_to "Services", services_path %></a>
-         
-        <a><%= link_to "Reviews", "#" %></a>
           
         
-          <a><%= link_to "Login", login_path, class: "special" %></a>
-          <a><%= link_to "Sign Up", signup_path, class: "special" %></a>
-            
+          <% if logged_in? %>
+          
+          <a><%= link_to "Dog", dogs_path %></a>
+          <a> <%= link_to "Log out", logout_path, method: :delete %></a>
+          
+          <% else %>
+          
+            <a><%= link_to "Home", root_path %></a>
+            <a><%= link_to "Contact", contact_path %></a>
+            <a><%= link_to "Services", services_path %></a>
+            <a><%= link_to "Reviews", "#" %></a>
         
+            <a><%= link_to "Login", login_path, class: "special" %></a>
+            <a><%= link_to "Sign Up", signup_path, class: "special" %></a>
+            
+        <% end %>
+          
       </nav>
       
     </header>

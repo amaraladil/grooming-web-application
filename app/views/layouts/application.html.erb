@@ -15,9 +15,11 @@
     <%= csrf_meta_tags %>
    
       <%= stylesheet_link_tag 'home' if controller_name == 'home' %>
-      <%= stylesheet_link_tag 'static'%>
-
-      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' if controller_name == 'application' %>
+      <%= stylesheet_link_tag 'static' if controller_name == 'application'%>
+      <%= stylesheet_link_tag 'static' if controller_name == 'tbl_inventories'%>
+      <%= stylesheet_link_tag 'static' if controller_name == 'sessions'%>
+      <%= stylesheet_link_tag 'sessions' if controller_name == 'tbl_users'%>
+     
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
