@@ -14,7 +14,13 @@
   <div class="field">
     <%= form.label :dateTime, value: "Date and Time: " %>
     
-    <%= form.datetime_select  :dateTime, id: :tblbooking_dateTime %>
+    <%#= form.collection_select(:dateTime, TblSchedule.all, :dateTime, :dateTime, {:include_blank => 'Please Select Date and Time'}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tbl_schedules_id, value: "Schedules: " %>
+    
+    <%= form.collection_select(:tbl_schedules_id, TblSchedule.where(["tbl_schedules.isTaken = false || tbl_schedules.id = ?", tblbooking.tbl_schedules_id]), :id, :full_message, {:include_blank => 'Please Select Date and Time'}) %>
   </div>
 
   <div class="field">
@@ -29,8 +35,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :tbl_users_id, value: "Staff: " %>
-    <%= form.collection_select(:tbl_users_id, TblUser.where("tbl_users.userType =  '2' || tbl_users.userType = '1'"), :id, :full_name , {:include_blank => 'Please Select Staff'}) %>
+    <%#= form.label :tbl_users_id, value: "Staff: " %>
+    <%#= form.collection_select(:tbl_users_id, TblUser.where("tbl_users.userType =  '2' || tbl_users.userType = '1'"), :id, :full_name , {:include_blank => 'Please Select Staff'}) %>
   </div>
 
   <div class="field">

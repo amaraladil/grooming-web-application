@@ -1,0 +1,43 @@
+
+
+<center>
+     
+<div class="backback">
+   <h1>Show Schedule</h1>
+<div class="row">
+
+
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Booking ID:</strong>
+  <%= @tblschedule.id %>
+</p>
+
+<p>
+  <strong>Datetime:</strong>
+  <%= @tblschedule.dateTime %>
+</p>
+
+<p>
+  <strong>Is Taken?:</strong>
+  <%= @tblschedule.isTaken? %>
+</p>
+
+<p>
+  <strong>Staff: </strong>
+  <% if !@staff.nil? %>
+    <%= @staff.firstName  %> <%= @staff.lastName  %>  (ID: <%= @tblschedule.tbl_users_id %>)
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_tbl_schedule_path(@tblschedule) %> |
+<%= link_to 'Back', tbl_schedules_path %>
+
+
+</div>
+    
+</div>
+</center>

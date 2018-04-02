@@ -1,0 +1,58 @@
+
+<center>
+     
+<div class="backback">
+   <h1>Schedules</h1>
+<div class="row">
+
+
+<p id="notice"><%= notice %></p>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Schedule &nbsp;</th>
+      <th>Datetime&nbsp;</th>
+      <th>IsTaken?&nbsp;</th>
+      <th>Staff_ID&nbsp;</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tblschedules.each do |tblschedule| %>
+      <tr>
+        <td><%= tblschedule.id %></td>
+        <td><%= tblschedule.dateTime.strftime("%d/%m/%Y %H:%M") %>&nbsp;&nbsp;&nbsp;</td>
+        <td><%= tblschedule.isTaken? %></td>
+        <td><%= tblschedule.tbl_users_id %></td>
+        <td><%= link_to 'Show', tblschedule %>&nbsp;</td>
+        <td><%= link_to 'Edit', edit_tbl_schedule_path(tblschedule) %> &nbsp;</td>
+        <td><%= link_to 'Destroy', tblschedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Schedule', new_tbl_schedule_path %>
+
+
+<style>
+  #table {
+    color: black;
+    text-align:center;
+    letter-spacing:1.5px;   
+    line-height: 1.5;
+}
+
+table, th, td {
+   border: 1px solid white;
+}
+</style>
+
+</div>
+    
+</div>
+</center>

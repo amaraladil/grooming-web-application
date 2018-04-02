@@ -1,0 +1,36 @@
+<%= form_with(model: tblschedule, local: true) do |form| %>
+  <% if tblschedule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tblschedule.errors.count, "error") %> prohibited this tblbooking from being saved:</h2>
+
+      <ul>
+      <% tblschedule.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :dateTime, value: "Date and Time: " %>
+    
+    <%= form.datetime_select  :dateTime, id: :tblschedule_dateTime %>
+  </div>
+
+  <div class="field">
+    <%= form.label :isTaken, value: "Is Taken?: " %>
+    <%= form.check_box :isTaken?, id: :tblbooking_isTaken? %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tbl_users_id, value: "Staff: " %>
+    <%= form.collection_select(:tbl_users_id, TblUser.where("tbl_users.userType =  '2' || tbl_users.userType = '1'"), :id, :full_name , {:include_blank => 'Select Staff'}) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+

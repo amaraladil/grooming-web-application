@@ -5,9 +5,6 @@ class TblBookingsController < ApplicationController
   # GET /tblbookings.json
   def index
     @tblbookings = TblBooking.all
-
-
-    @bookingjoin = TblBooking.joins(:tbl_users, :tbldog, :tblservice, :tblstaff)
        
   end
 
@@ -26,6 +23,8 @@ class TblBookingsController < ApplicationController
     if !@booking.tbl_services_id.nil?
       @service = TblService.find(@booking.tbl_services_id)
     end
+
+    @schedules = TblSchedule.where(dateTime: @booking.dateTime).first
   end
 
   # GET /tblbookings/new
@@ -44,6 +43,14 @@ class TblBookingsController < ApplicationController
 
     respond_to do |format|
       if @tblbooking.save
+        @schedule = TblSchedule.find(@tblbooking.tbl_schedules_id)
+        @schedule.isTaken = true
+        @schedule.save
+        
+        @tblbooking.dateTime = @schedule.dateTime
+        @tblbooking.tbl_users_id = @schedule.tbl_users_id
+        @tblbooking.save
+
         format.html { redirect_to @tblbooking, notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @tblbooking }
       else
@@ -56,10 +63,28 @@ class TblBookingsController < ApplicationController
   # PATCH/PUT /tblbookings/1
   # PATCH/PUT /tblbookings/1.json
   def update
-    @test = :isPaid?
-    logger.debug "The TEST is #{@test}"
     respond_to do |format|
+      logger.debug "The object is #{@tblbooking.tbl_schedules_id}"
+      if !@tblbooking.tbl_schedules_id.nil?
+        @oldschedule = TblSchedule.find(@tblbooking.tbl_schedules_id)
+      end
+
       if @tblbooking.update(tblbooking_params)
+
+        logger.debug "After is #{@tblbooking.tbl_schedules_id}"
+        if !@oldschedule.nil?
+          @oldschedule.isTaken = false
+          @oldschedule.save
+        end
+
+        @schedule = TblSchedule.find(@tblbooking.tbl_schedules_id)
+        @schedule.isTaken = true
+        @schedule.save
+
+        @tblbooking.dateTime = @schedule.dateTime
+        @tblbooking.tbl_users_id = @schedule.tbl_users_id
+        @tblbooking.save
+
         format.html { redirect_to @tblbooking, notice: 'Booking was successfully updated.' }
         format.json { render :show, status: :ok, location: @tblbooking }
       else
@@ -74,7 +99,7 @@ class TblBookingsController < ApplicationController
   def destroy
     @tblbooking.destroy
     respond_to do |format|
-      format.html { redirect_to tblbookings_url, notice: 'Booking was successfully destroyed.' }
+      format.html { redirect_to tbl_bookings_url, notice: 'Booking was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -87,7 +112,7 @@ class TblBookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tblbooking_params
-      params.require(:tbl_booking).permit(:dateTime, :isPaid, :tbl_users_id, :tbl_dogs_id, :tbl_services_id)
+      params.require(:tbl_booking).permit(:dateTime, :isPaid, :tbl_users_id, :tbl_dogs_id, :tbl_services_id, :tbl_schedules_id)
     end
 
 end
