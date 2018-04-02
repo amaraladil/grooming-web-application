@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Serviceid:</strong>
+  <%= @tblservice.id %>
+</p>
+
+<p>
+  <strong>Servicename:</strong>
+  <%= @tblservice.serviceName %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= number_to_currency(@tblservice.price, :unit => "$") %>
+</p>
+
+<%= link_to 'Edit', edit_tbl_service_path(@tblservice) %> |
+<%= link_to 'Back', tbl_services_path %>

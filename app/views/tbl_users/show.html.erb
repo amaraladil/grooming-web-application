@@ -20,6 +20,17 @@
         <b>Address: </b><%= @user.address %><br/><br/>
         <b>Postal Code: </b><%= @user.postalCode %><br/><br/>
       </h5>  
+    </div>
+    <% @userDogs.each do |dog| %>
+    <div class="profile">
+      <h5>
+        <%= image_tag("doodle.png", :class => "img-responsive", :style => "width:12%", :alt => "image" ) %> 
+        <b>Dog Name: </b><%= dog.dogName %><br/>
+        <b>Dog ID: </b><%= dog.id %><br/>
+        <b>Dog ID: </b><%= dog.dogSize %><br/>
+      </h5>  
     </div>      
+    <% end %>
+
   </div>
 </div>

@@ -25,6 +25,7 @@ class TblDogsController < ApplicationController
   # POST /tbldogs.json
   def create
     @tbldog = TblDog.new(tbldog_params)
+    @tbldog.tbl_users_id = current_user.id
 
     respond_to do |format|
       if @tbldog.save
@@ -64,7 +65,7 @@ class TblDogsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tbldog
-      @tbldog = Tbldog.find(params[:id])
+      @tbldog = TblDog.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

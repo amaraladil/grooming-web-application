@@ -35,6 +35,8 @@ gem 'mysql2', '~> 0.3.16'
 gem 'bootstrap-sass', '~> 3.3.5'
 
 
+
+
 gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

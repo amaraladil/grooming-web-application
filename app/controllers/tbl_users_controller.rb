@@ -5,6 +5,7 @@ class TblUsersController < ApplicationController
 
   def show
     @user = TblUser.find(params[:id])
+    @userDogs= TblDog.where(tbl_users_id: params[:id])
   end
 
   def create
@@ -39,5 +40,7 @@ class TblUsersController < ApplicationController
         redirect_to login_url
       end
     end
+
+    
 
 end

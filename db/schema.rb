@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312234229) do
+ActiveRecord::Schema.define(version: 20180402160726) do
 
   create_table "tbl_bills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "tbl_bookings_id"
@@ -20,13 +20,15 @@ ActiveRecord::Schema.define(version: 20180312234229) do
   end
 
   create_table "tbl_bookings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.time "dateTime"
-    t.boolean "isPaid?"
+    t.datetime "dateTime"
+    t.boolean "isPaid"
     t.bigint "tbl_users_id"
     t.bigint "tbl_dogs_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tbl_services_id"
     t.index ["tbl_dogs_id"], name: "index_tbl_bookings_on_tbl_dogs_id"
+    t.index ["tbl_services_id"], name: "index_tbl_bookings_on_tbl_services_id"
     t.index ["tbl_users_id"], name: "index_tbl_bookings_on_tbl_users_id"
   end
 
@@ -44,7 +46,7 @@ ActiveRecord::Schema.define(version: 20180312234229) do
     t.string "name"
     t.decimal "price", precision: 10
     t.integer "quantity"
-    t.boolean "isActive?"
+    t.boolean "isActive"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,7 +62,7 @@ ActiveRecord::Schema.define(version: 20180312234229) do
 
   create_table "tbl_services", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "serviceName"
-    t.decimal "price", precision: 10
+    t.decimal "price", precision: 10, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,6 +82,7 @@ ActiveRecord::Schema.define(version: 20180312234229) do
 
   add_foreign_key "tbl_bills", "tbl_bookings", column: "tbl_bookings_id"
   add_foreign_key "tbl_bookings", "tbl_dogs", column: "tbl_dogs_id"
+  add_foreign_key "tbl_bookings", "tbl_services", column: "tbl_services_id"
   add_foreign_key "tbl_bookings", "tbl_users", column: "tbl_users_id"
   add_foreign_key "tbl_dogs", "tbl_users", column: "tbl_users_id"
   add_foreign_key "tbl_ratings", "tbl_users", column: "tbl_users_id"

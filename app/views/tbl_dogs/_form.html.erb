@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= form.label :dogName %>
-    <%= form.text_field :dogName, id: :tbldog_dogName %>
+    <%= form.text_field :dogName, id: :dogName %>
   </div>
 
   <div class="field">
     <%= form.label :dogSize %>
-    <%= form.text_field :dogSize, id: :tbldog_dogSize %>
+    <%= form.text_field :dogSize, id: :dogSize %>
   </div>
 
   <div class="field">
     <%= form.label :tbl_users_id %>
-    <%= form.number_field :tbl_users_id, id: :tbldog_tbl_users_id %>
+    <%= form.hidden_field :tbl_users_id, id: :tbl_users_id, value: current_user.id %>
   </div>
 
   <div class="actions">

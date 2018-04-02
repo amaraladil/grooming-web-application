@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TblServiceControllerTest < ActionDispatch::IntegrationTest
+class TblBookingsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

@@ -2,7 +2,7 @@
 
 <p>
   <strong>Dogid:</strong>
-  <%= @tbldog.dogID %>
+  <%= @tbldog.id %>
 </p>
 
 <p>
@@ -17,8 +17,8 @@
 
 <p>
   <strong>Clientid:</strong>
-  <%= @tbldog.clientID %>
+  <%= @tbldog.tbl_users_id %>
 </p>
 
-<%= link_to 'Edit', edit_tbldog_path(@tbldog) %> |
-<%= link_to 'Back', tbldogs_path %>
+<%= link_to 'Edit', edit_tbl_dog_path(@tbldog) %> |
+<%= link_to 'Back', tbl_dogs_path %>

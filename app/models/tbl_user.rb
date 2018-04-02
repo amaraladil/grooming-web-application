@@ -18,4 +18,8 @@ class TblUser < ApplicationRecord
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
    end
+
+   def full_name
+      "#{firstName} #{lastName}"
+    end
 end

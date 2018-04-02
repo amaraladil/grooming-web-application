@@ -1,10 +1,10 @@
-class TblServiceController < ApplicationController
+class TblServicesController < ApplicationController
 	before_action :set_tblservice, only: [:show, :edit, :update, :destroy]
 
   # GET /tblservices
   # GET /tblservices.json
   def index
-    @tblservices = Tblservice.all
+    @tblservices = TblService.all
   end
 
   # GET /tblservices/1
@@ -14,7 +14,7 @@ class TblServiceController < ApplicationController
 
   # GET /tblservices/new
   def new
-    @tblservice = Tblservice.new
+    @tblservice = TblService.new
   end
 
   # GET /tblservices/1/edit
@@ -24,7 +24,7 @@ class TblServiceController < ApplicationController
   # POST /tblservices
   # POST /tblservices.json
   def create
-    @tblservice = Tblservice.new(tblservice_params)
+    @tblservice = TblService.new(tblservice_params)
 
     respond_to do |format|
       if @tblservice.save
@@ -64,11 +64,11 @@ class TblServiceController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tblservice
-      @tblservice = Tblservice.find(params[:id])
+      @tblservice = TblService.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tblservice_params
-      params.require(:tblservice).permit(:serviceID, :serviceName, :price)
+      params.require(:tbl_service).permit( :serviceName, :price)
     end
 end

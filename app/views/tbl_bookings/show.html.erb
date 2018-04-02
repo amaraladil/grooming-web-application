@@ -1,0 +1,57 @@
+
+
+<center>
+     
+<div class="backback">
+   <h1>Client Booking</h1>
+<div class="row">
+
+
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Booking ID:</strong>
+  <%= @tblbooking.id %>
+</p>
+
+<p>
+  <strong>Datetime:</strong>
+  <%= @tblbooking.dateTime %>
+</p>
+
+<p>
+  <strong>Ispaid?:</strong>
+  <%= @tblbooking.isPaid? %>
+</p>
+
+<p>
+  <strong>Dog: </strong>
+    <% if !@dog.nil? %>
+      <%= @dog.dogName %>  (ID: <%= @tblbooking.tbl_dogs_id %>)
+    <% end %>
+</p>
+
+<p>
+  <strong>Staff: </strong>
+  <% if !@staff.nil? %>
+    <%= @staff.firstName  %> <%= @staff.lastName  %>  (ID: <%= @tblbooking.tbl_users_id %>)
+  <% end %>
+</p>
+
+<p>
+  <strong>Service: </strong>
+  <% if !@service.nil? %>
+    <%= @service.serviceName  %> <%= number_to_currency(@service.price, :unit => "$")  %> (ID: <%= @tblbooking.tbl_services_id %>)
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_tbl_booking_path(@tblbooking) %> |
+<%= link_to 'Back', tbl_bookings_path %>
+
+
+</div>
+    
+</div>
+</center>
