@@ -23,10 +23,9 @@
       <tr>
         <td><%= tblinventory.id %></td>
         <td><%= tblinventory.name %></td>
-        <td>$<%= tblinventory.price %>.00</td>
+        <td>$<%= tblinventory.price %></td>
         <td><%= tblinventory.quantity %></td>
-        <td><%= link_to 'View', tblinventory %></td>
-        <td><%= link_to 'Edit', edit_tbl_inventory_path(tblinventory) %></td>
+        <td><%= link_to 'Edit', edit_tbl_inventory_path(tblinventory) %>|</td>
         <td><%= link_to 'Delete', tblinventory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
