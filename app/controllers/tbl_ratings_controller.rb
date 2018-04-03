@@ -1,10 +1,12 @@
-class TblRatingController < ApplicationController
+class TblRatingsController < ApplicationController
 	before_action :set_tblrating, only: [:show, :edit, :update, :destroy]
 
   # GET /tblratings
   # GET /tblratings.json
   def index
-    @tblratings = Tblrating.all
+    @tblratings = TblRating.all.order(created_at: :desc)
+    @tblrating = TblRating.new
+    @reviews = TblRating.paginate(page: params[:page])
   end
 
   # GET /tblratings/1
@@ -14,7 +16,7 @@ class TblRatingController < ApplicationController
 
   # GET /tblratings/new
   def new
-    @tblrating = Tblrating.new
+    @tblrating = TblRating.new
   end
 
   # GET /tblratings/1/edit
@@ -24,16 +26,20 @@ class TblRatingController < ApplicationController
   # POST /tblratings
   # POST /tblratings.json
   def create
-    @tblrating = Tblrating.new(tblrating_params)
+    @tblrating = TblRating.new(tblrating_params)
+    @tblrating.tbl_users_id = current_user.id
+    logger.debug params.inspect
+    logger.debug params[:star].inspect
+    @star = params[:star]
+    logger.debug @star
+    @tblrating.rating = @star
 
-    respond_to do |format|
+   
       if @tblrating.save
-        format.html { redirect_to @tblrating, notice: 'Tblrating was successfully created.' }
-        format.json { render :show, status: :created, location: @tblrating }
+        redirect_to reviews_path
       else
         format.html { render :new }
         format.json { render json: @tblrating.errors, status: :unprocessable_entity }
-      end
     end
   end
 
@@ -56,7 +62,7 @@ class TblRatingController < ApplicationController
   def destroy
     @tblrating.destroy
     respond_to do |format|
-      format.html { redirect_to tblratings_url, notice: 'Tblrating was successfully destroyed.' }
+      format.html { redirect_to reviews_path, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,11 +70,11 @@ class TblRatingController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tblrating
-      @tblrating = Tblrating.find(params[:id])
+      @tblrating = TblRating.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tblrating_params
-      params.require(:tblrating).permit(:ratingID, :rating, :comment, :clientID)
+      params.require(:tbl_rating).permit( :rating, :comment, :tbl_users_id)
     end
 end

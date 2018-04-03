@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Reviews</h1>
+
+<% if logged_in? %>
+<br/><hr/>
+  <%= render 'tbl_ratings/form' %>
+<% end %>
+
+
+    <% @tblratings.each do |tbl_ratings| %>
+      <br/>
+        <%= TblUser.find(tbl_ratings.tbl_users_id).firstName %></br>
+         Rating: <%= tbl_ratings.rating %></br>
+        <%= tbl_ratings.comment %></br>
+        <%= time_ago_in_words(tbl_ratings.created_at) %> ago</br>
+        <%= link_to 'Delete', tbl_ratings, method: :delete, data: { confirm: 'Are you sure?' } %></br>
+  
+    <% end %>
+  
+</table>
+
+
+
+<br>
+

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     root 'home#index'
   	get  '/contact',   to: 'application#contact'
     get  '/services',   to: 'application#services'
+    get  '/reviews',   to: 'tbl_ratings#index'
     get  '/signup',  to: 'tbl_users#new'
     post '/signup',  to: 'tbl_users#create'
     get  '/dogs', to: 'tbl_dogs#new'

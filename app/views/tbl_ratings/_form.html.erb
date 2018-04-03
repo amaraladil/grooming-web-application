@@ -1,0 +1,84 @@
+
+<style>
+.star {
+    float:left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.star:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.star:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.star:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.star > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.star:not(:checked) > label:hover,
+.star:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.star > input:checked + label:hover,
+.star > input:checked + label:hover ~ label,
+.star > input:checked ~ label:hover,
+.star > input:checked ~ label:hover ~ label,
+.star > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.star > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+</style>
+
+<%= form_for(@tblrating) do |f| %>
+  <div class="field">
+    <%= f.label :rating %><br/>
+    <fieldset class="star">
+      <%= f.number_field :rating, id: :tblrating_rating %>
+      <%= f.radio_button :rating, :id => "star5", :name => "star", :value => "5" %>
+      <input type="radio" id="star5" name="star" value="5" /><label for="star5" title="Amazing!">5 stars</label>
+      <input type="radio" id="star4" name="star" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+      <input type="radio" id="star3" name="star" value="3" /><label for="star3" title="Meh">3 stars</label>
+      <input type="radio" id="star2" name="star" value="2" /><label for="star2" title="Pretty bad">2 stars</label>
+      <input type="radio" id="star1" name="star" value="1" /><label for="star1" title="Horrible">1 star</label>
+    </fieldset><br>
+  
+
+  <div class="field">
+    <br/><br/>
+    <%= f.label :comment %><br/>
+    <%= f.text_field :comment, id: :tblrating_comment %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit 'Comment' %>
+  </div>
+<% end %>
